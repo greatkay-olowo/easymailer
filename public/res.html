@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="[ fetchBackAddress()]">
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Try Mailer.js</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-lg-4 col-md-6 col-sm-10 mx-auto mt-5">
+      <div
+        class="card text-center shadow p-3 mb-5 bg-white rounded rounded-lg border border-white"
+      >
+        <div class="card-body">
+          <button
+            onclick="postMail()"
+            class="btn btn-primary btn-lg align-self-center"
+            id="sendButton"
+          >
+            Click to send your message
+          </button>
+          <h5 class="card-title align-self-center mt-3" id="sendResponse">
+            Message Pending.
+          </h5>
+
+          <div id="back" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p id="submit"></p>
+    </div>
+
+    <script>
+      const fetchBackAddress = () => {
+        axios.get("http://localhost:3000/1/backurl").then((res) => {
+          document.getElementById(
+            "back"
+          ).innerHTML += `<a class='btn btn-warning btn-sm align-self-center' href='${res.data.refer}'> &#10096; Back</a>`;
+          console.log(res);
+        });
+      };
+
+      const postMail = async () => {
+        await axios
+          .get("http://localhost:3000/1/sendmail")
+          .then((response) => {
+            document.getElementById("sendResponse").innerText = response.data;
+          })
+          .catch((error) => {
+            document.getElementById("sendResponse").innerText = response.data;
+          });
+
+        document.getElementById("sendButton").style.display = "none";
+      };
+    </script>
+  </body>
+</html>
