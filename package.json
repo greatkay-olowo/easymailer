@@ -9,12 +9,12 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "Mailer",
+  "name": "Easy Mailer",
   "version": "1.0.0",
-  "main": "referes.js",
+  "main": "server.js",
   "devDependencies": {},
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": ""
 }
