@@ -4,11 +4,12 @@
 <p>Easy Mailer enables you to receive emails from your contact forms without writing a single code.</p>
 <p>Adding abc.xyz/#YourEmailAddress to the action of your form is all you need to do. </p>
 <p>
-
-<code><form action='abc.xyz/#YourEmailAddress'>
+```
+<form action='abc.xyz/#YourEmailAddress'>
 ...
 
-</form></code>
+</form>
+```
 
 </p>
 <h2>Built With</h2>
